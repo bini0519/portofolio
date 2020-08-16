@@ -1,0 +1,15 @@
+<form method="POST" action="{% url 'create_comment' my_jss.id %}">
+    {% csrf_token %}
+    {{comment_form}}
+    <input type='submit' value="확인">
+</form>
+
+
+{% for comment in my_pp.comment_set.all %}
+<p>
+    댓글: {{comment.content}}
+    <a href="{% url 'delete_comment' my_pp.id %}">
+        <button>삭제</button>
+    </a>
+</p>
+{% endfor %}
